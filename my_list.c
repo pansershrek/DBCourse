@@ -2,11 +2,14 @@
 //My methodes
 int new_list(ht_list_ptr *in,void *page,const char *my_key,
     mytype hash_key,ht_list_ptr next,ht_list_ptr last) { 
-    if ((in == NULL) || (page == NULL) || (my_key == NULL)) {
+    if ((page == NULL) || (my_key == NULL)) {
         return -1;
     }
     //create a new node for list
     (*in) = (ht_list_ptr)malloc(sizeof(ht_list));
+    if (!(*in)) {
+        return -1;
+    }   
     //i have been borned yet punk
     (*in)->page = page;
     strcpy((*in)->my_key,my_key);
@@ -55,14 +58,16 @@ int push_list(ht_list_ptr *top,ht_list_ptr in) {
     *top=in;
     return 0;
 }
-/////////////////////////////////////
-//functions for local test
-void test_print(ht_list_ptr top) {
-    if (!top) {
-        return;
+ht_list_ptr search_in_list(ht_list_ptr top,const char *key) {
+    if (!key) {
+        return NULL;
     }
-    if (top->next) {
-        test_print(top->next);
+    while (top) {
+        if (strcmp(top->my_key,key) == 0) {
+            return top;
+        } else {
+            top = top->next;
+        }
     }
-    fprintf(stdout,"%d\n",top->test_flag);
+    return NULL; 
 }

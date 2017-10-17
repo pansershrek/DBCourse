@@ -1,5 +1,15 @@
 #include "struct_for_hash.h"
-
+/////////////////////////////////////
+//functions for local test
+void test_print(ht_list_ptr top) {
+    if (!top) {
+        return;
+    }
+    if (top->next) {
+        test_print(top->next);
+    }
+    fprintf(stdout,"%d\n",top->test_flag);
+}
 int test_new_list(ht_list_ptr *in,char test_flag,ht_list_ptr next,ht_list_ptr last) { 
     //create a new node for list
     (*in) = (ht_list*)malloc(sizeof(ht_list));
