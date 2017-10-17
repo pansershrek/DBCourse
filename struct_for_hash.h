@@ -5,6 +5,7 @@
 
 typedef long long mytype;
 #define MAX_LEN 1024
+
 //My 2 "class"
 typedef struct List_for_Hash   //creat here my own list, with blackjack and wors
 {   

@@ -1,0 +1,1 @@
+#include "struct_for_hash.h"
